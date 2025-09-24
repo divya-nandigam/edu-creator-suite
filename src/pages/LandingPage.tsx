@@ -26,6 +26,10 @@ import digitalMarketingImg from "@/assets/course-digital-marketing.jpg";
 import photoshopImg from "@/assets/course-photoshop.jpg";
 import pythonImg from "@/assets/course-python.jpg";
 import awsImg from "@/assets/course-aws.jpg";
+import htmlCssImg from "@/assets/course-html-css.jpg";
+import javascriptImg from "@/assets/course-javascript.jpg";
+import gitImg from "@/assets/course-git.jpg";
+import uxDesignImg from "@/assets/course-ux-design.jpg";
 
 const LandingPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -118,6 +122,59 @@ const LandingPage = () => {
       imageUrl: awsImg,
       category: "IT & Software",
       level: "Advanced" as const
+    },
+    // Free courses
+    {
+      id: "7",
+      title: "HTML & CSS Fundamentals for Beginners",
+      instructor: "Sarah Johnson",
+      rating: 4.4,
+      reviewCount: 89234,
+      price: 0,
+      duration: "8 hours",
+      students: 156789,
+      imageUrl: htmlCssImg,
+      category: "Development",
+      level: "Beginner" as const
+    },
+    {
+      id: "8",
+      title: "Introduction to JavaScript Programming",
+      instructor: "Mike Chen",
+      rating: 4.3,
+      reviewCount: 67543,
+      price: 0,
+      duration: "12 hours",
+      students: 134567,
+      imageUrl: javascriptImg,
+      category: "Programming",
+      level: "Beginner" as const
+    },
+    {
+      id: "9",
+      title: "Git & GitHub Fundamentals",
+      instructor: "Alex Rodriguez",
+      rating: 4.6,
+      reviewCount: 45678,
+      price: 0,
+      duration: "6 hours",
+      students: 98765,
+      imageUrl: gitImg,
+      category: "Development",
+      level: "Beginner" as const
+    },
+    {
+      id: "10",
+      title: "UI/UX Design Principles",
+      instructor: "Emma Wilson",
+      rating: 4.5,
+      reviewCount: 34567,
+      price: 0,
+      duration: "10 hours",
+      students: 87654,
+      imageUrl: uxDesignImg,
+      category: "Design",
+      level: "Beginner" as const
     }
   ];
 
@@ -182,8 +239,9 @@ const LandingPage = () => {
             </div>
             
             <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full md:w-auto mt-6 md:mt-0">
-              <TabsList className="grid w-full grid-cols-3 md:w-auto md:grid-cols-4">
+              <TabsList className="grid w-full grid-cols-4 md:w-auto md:grid-cols-5">
                 <TabsTrigger value="all">All</TabsTrigger>
+                <TabsTrigger value="free">Free</TabsTrigger>
                 <TabsTrigger value="development">Development</TabsTrigger>
                 <TabsTrigger value="design">Design</TabsTrigger>
                 <TabsTrigger value="business">Business</TabsTrigger>
@@ -192,15 +250,55 @@ const LandingPage = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course) => (
-              <CourseCard key={course.id} {...course} />
-            ))}
+            {courses
+              .filter(course => {
+                if (selectedCategory === "all") return true;
+                if (selectedCategory === "free") return course.price === 0;
+                return course.category.toLowerCase().includes(selectedCategory);
+              })
+              .map((course) => (
+                <CourseCard key={course.id} {...course} />
+              ))}
           </div>
           
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" className="hover:shadow-hover">
               View All Courses
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Free Courses Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Start Learning for Free
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Get started with our high-quality free courses and build foundational skills
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {courses
+              .filter(course => course.price === 0)
+              .map((course) => (
+                <CourseCard key={course.id} {...course} />
+              ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <div className="bg-gradient-primary rounded-2xl p-8 text-center text-primary-foreground">
+              <h3 className="text-2xl font-bold mb-4">Ready for Advanced Learning?</h3>
+              <p className="mb-6 opacity-90">
+                Unlock premium courses with certificates, projects, and lifetime access
+              </p>
+              <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                Explore Premium Courses
+              </Button>
+            </div>
           </div>
         </div>
       </section>

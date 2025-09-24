@@ -113,17 +113,25 @@ const CourseCard = ({
         {/* Price */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-primary">
-              ${price}
-            </span>
-            {originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
-                ${originalPrice}
+            {price === 0 ? (
+              <span className="text-lg font-bold text-success">
+                Free
               </span>
+            ) : (
+              <>
+                <span className="text-lg font-bold text-primary">
+                  ${price}
+                </span>
+                {originalPrice && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    ${originalPrice}
+                  </span>
+                )}
+              </>
             )}
           </div>
           <Button size="sm" className="bg-gradient-primary hover:bg-primary-dark">
-            Add to Cart
+            {price === 0 ? "Enroll Free" : "Add to Cart"}
           </Button>
         </div>
       </div>
