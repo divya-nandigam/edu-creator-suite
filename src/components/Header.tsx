@@ -15,13 +15,13 @@ const Header = () => {
             <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
               <BookOpen className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-primary">EduPlatform</span>
+            <span className="text-xl font-bold text-primary">Divya's Academy</span>
           </div>
 
           {/* Navigation Links - Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#" className="text-foreground hover:text-primary transition-colors">Categories</a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors">Teach on EduPlatform</a>
+            <a href="#" className="text-foreground hover:text-primary transition-colors">Teach on Divya's Academy</a>
             <a href="#" className="text-foreground hover:text-primary transition-colors">My Learning</a>
           </nav>
 
@@ -74,7 +74,7 @@ const Header = () => {
           <div className="md:hidden mt-4 pb-4 border-t pt-4">
             <nav className="flex flex-col space-y-4">
               <a href="#" className="text-foreground hover:text-primary transition-colors">Categories</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Teach on EduPlatform</a>
+              <a href="#" className="text-foreground hover:text-primary transition-colors">Teach on Divya's Academy</a>
               <a href="#" className="text-foreground hover:text-primary transition-colors">My Learning</a>
               <div className="flex space-x-2 pt-2">
                 <Button variant="outline" size="sm" className="flex-1">
