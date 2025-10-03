@@ -56,6 +56,9 @@ This project is built with:
 - Vite
 - TypeScript
 - React
+- Node.js
+- MongoDB
+- Express
 - shadcn-ui
 - Tailwind CSS
 
